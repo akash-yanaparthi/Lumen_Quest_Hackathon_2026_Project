@@ -16,3 +16,15 @@ This project is based on a problem statement provided as part of the hackathon.
 
 ## 📁 Folder Structure
 
+
+## 👥 Team
+
+- [Y L N J Rao Akash]
+- [Yasaswini Marripati]
+- [Khushi]
+- [Ishan Goyal]
+- [Fowzi]
+- [Aleti Poojitha]
+- [Kaithoju Ganesh]
+- [Yakshith Etikala]
+- [Snehitha Reddy]
