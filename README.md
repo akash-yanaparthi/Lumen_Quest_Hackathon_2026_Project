@@ -49,3 +49,4 @@ npm start
 - [Kaithoju Ganesh]
 - [Yakshith Etikala]
 - [Snehitha Reddy]
+- [Omsai Tejaswini Sureddi]
