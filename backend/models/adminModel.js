@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const adminSchema = new mongoose.Schema({
   email: {
@@ -8,15 +9,15 @@ const adminSchema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
-  FirstName: {
+  firstName: {
     type: String,
     required: true
   },
-  LastName: {
+  lastName: {
     type: String,
     required: true
   },
-  PhoneNumber: {
+  phoneNumber: {
     type: String,
     required: true
   },
@@ -27,5 +28,10 @@ const adminSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
+// Compare password method
+adminSchema.methods.comparePassword = async function (password) {
+  return bcrypt.compare(password, this.passwordHash);
+};
 
 module.exports = mongoose.model('Admin', adminSchema);

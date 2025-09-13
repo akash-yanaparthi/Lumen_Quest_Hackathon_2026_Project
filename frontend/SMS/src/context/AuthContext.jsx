@@ -37,12 +37,27 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async ({ email, password, role }) => {
-    const u = await fakeAuthApi.login({ email, password, role });
-    setUser(u);
-    localStorage.setItem('user', JSON.stringify(u));
-    // redirect based on role
-    if (u.role === 'admin') navigate('/admin/dashboard');
-    else navigate('/user/dashboard');
+    let endpoint;
+    if (role === 'admin') {
+      endpoint = 'http://localhost:5000/signup/admin/login';
+    } else {
+      endpoint = 'http://localhost:5000/signup/user/login';
+    }
+
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.msg || 'Login failed');
+
+    // Save token and user info to localStorage or state as needed
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    // Optionally update context state here
+    return data;
   };
 
   const signup = async ({ email, password, role }) => {
