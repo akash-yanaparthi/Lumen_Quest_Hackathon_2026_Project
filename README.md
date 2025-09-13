@@ -23,7 +23,7 @@ To run the project locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/Lumen_Quest_Hackathon_2026_Project.git
+git clone https://github.com/akash-yanaparthi/Lumen_Quest_Hackathon_2026_Project.git
 
 # Go into the project directory
 cd Lumen_Quest_Hackathon_2026_Project
