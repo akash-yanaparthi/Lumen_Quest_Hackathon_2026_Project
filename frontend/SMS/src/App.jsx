@@ -1,48 +1,38 @@
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
 
-import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
-
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import AdminLogin from './pages/AdminLogin';
-import AdminSignup from './pages/AdminSignup';
-import UserDashboard from './pages/UserDashboard';
-import AdminDashboard from './pages/AdminDashboard';
-import Plans from './pages/Plans';
-import Subscribe from './pages/Subscribe';
+// Pages
+import Home from "./pages/Home";
+import Plans from "./pages/Plans";
+import Subscribe from "./pages/Subscribe";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
+    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-100">
+      <Navbar />
+      <Layout>
         <Routes>
-
-          {/* Public routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/signup" element={<AdminSignup />} />
+          <Route path="/" element={<Home />} />
           <Route path="/plans" element={<Plans />} />
-
-          {/* Protected routes for users */}
-          <Route element={<ProtectedRoute requiredRole="user" />}>
-            <Route path="/user/dashboard" element={<UserDashboard />} />
-            <Route path="/subscribe/:planId" element={<Subscribe />} />
-          </Route>
-
-          {/* Protected routes for admins */}
-          <Route element={<ProtectedRoute requiredRole="admin" />}>
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          </Route>
-
-          {/* Default redirect */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="/subscribe" element={<Subscribe />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+      </Layout>
+    </div>
   );
 }
 

@@ -1,37 +1,33 @@
-// src/pages/Subscribe.jsx
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-
-const Subscribe = () => {
-  const { planId } = useParams();
-  const { user } = useAuth();
-  const [status, setStatus] = useState(null);
-
-  const handleSubscribe = () => {
-    // Call backend to subscribe user to planId
-    setStatus('success');
-  };
-
+export default function Subscribe() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4">Subscribe Page</h2>
-        <p className="mb-4">Plan: <span className="font-semibold">{planId}</span></p>
-        <p className="mb-4">User: {user?.email}</p>
-        {status === 'success' ? (
-          <p className="text-green-600">Subscription successful!</p>
-        ) : (
-          <button
-            onClick={handleSubscribe}
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-          >
-            Confirm Subscription
-          </button>
-        )}
-      </div>
+    <div className="max-w-lg mx-auto bg-white shadow-xl rounded-2xl p-8">
+      <h2 className="text-2xl font-bold text-purple-700 text-center mb-6">
+        Subscribe Now
+      </h2>
+      <form className="space-y-4">
+        <input
+          type="text"
+          placeholder="Full Name"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+        />
+        <input
+          type="email"
+          placeholder="Email Address"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+        />
+        <select className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400">
+          <option>Select Plan</option>
+          <option>Basic</option>
+          <option>Pro</option>
+          <option>Premium</option>
+        </select>
+        <button
+          type="submit"
+          className="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+        >
+          Confirm Subscription
+        </button>
+      </form>
     </div>
   );
-};
-
-export default Subscribe;
+}
