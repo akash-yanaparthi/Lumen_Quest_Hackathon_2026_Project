@@ -50,3 +50,5 @@ npm start
 - [Yakshith Etikala]
 - [Snehitha Reddy]
 - [Omsai Tejaswini Sureddi]
+- [Meghashree R]
+- [Nithees Kannan S]
