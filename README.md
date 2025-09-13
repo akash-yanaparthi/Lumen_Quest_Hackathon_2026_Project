@@ -28,8 +28,7 @@ git clone https://github.com/akash-yanaparthi/Lumen_Quest_Hackathon_2026_Project
 # Go into the project directory
 cd Lumen_Quest_Hackathon_2026_Project
 
-# Go to source code folder
-cd src
+# Navigate to front end and back end folders separately
 
 # Install dependencies 
 npm install      
